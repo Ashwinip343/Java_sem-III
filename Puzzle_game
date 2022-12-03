@@ -36,7 +36,7 @@ public class Puzzlegame {
                 }
                 else {
                     j--;
-                    if (j == 0) {
+                    if (j == 0){
 
 //                            loop=false;
 
@@ -48,14 +48,11 @@ public class Puzzlegame {
                             puzzle(que, ans);
                         }
 
-                        else if(restart.toUpperCase().equals("F")){
-                            loop = false;
-                            break;
-                        }
                         else{
-                            System.out.println("Please enter the correct choice:");
-                            String restart = sc.nextLine();
-                        }
+                            loop = false;
+                            break;}
+
+
 
                     } else if (j == 2) {
                         System.out.println("You got two more chances:");
@@ -110,11 +107,5 @@ public class Puzzlegame {
         System.out.println("Better luck next time!");
     }
 }
-
-
-
-
-
-
 
 
