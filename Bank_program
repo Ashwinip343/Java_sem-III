@@ -1,0 +1,68 @@
+import java.util.*;
+class InsufficientException extends Exception{  
+    public InsufficientException(String msg) {  
+    super(msg);  
+    }  
+}
+
+
+
+class Bank{
+    int bal;
+    void credit(int c){
+        bal+=c;
+        System.out.println("Transaction succesful ,Amount Creadited:"+c);
+        System.out.println("Current Balance:"+bal);
+    }
+    
+    void debit(int d)throws InsufficientException{
+        if(d>bal) {
+              throw new InsufficientException("Insufficient Balance");
+            
+        }
+        else{
+            bal-=d;
+            System.out.println("Transaction succesful,Amount debited:"+d);
+            System.out.println("Current Balance:"+bal);
+        }
+        
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    Bank b=new Bank();
+	    System.out.println("1.Credit\n2.Debit(0 to stop):");
+	    
+	    while(true){
+	        System.out.println("Enter choice:");
+	        int ch=sc.nextInt();
+	        if(ch==1){
+	            System.out.println("Amount:");
+	            int cre=sc.nextInt();
+	            b.credit(cre);
+	            
+	        }
+	        else if(ch==0){
+	            break;
+	        }
+	        else if(ch==2){
+	              try {
+                   System.out.println("Amount:");
+	               int deb=sc.nextInt();
+                    b.debit(deb);}
+             catch (InsufficientException ex) {
+            System.out.println(ex);  
+            break;
+        }  
+	            
+	        }
+	          else{
+                System.out.println("Please Enter correct choice");
+                break;
+	           
+            }
+	    }
+    }  
+	}
